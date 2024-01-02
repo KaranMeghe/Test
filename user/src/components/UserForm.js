@@ -11,7 +11,7 @@ const UserForm = ({ addUsers }) => {
     setUserName("");
   };
   return (
-    <form onSubmit={handleForm}>
+    <form onSubmit={handleForm} style={{ marginBottom: "50px" }}>
       <label name="name">Name</label> <br />
       <input
         type="text"

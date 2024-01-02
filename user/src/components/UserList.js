@@ -4,16 +4,20 @@ const UserList = ({ displayUsers }) => {
     displayUsers
   );
   return (
-    <tabel>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
+    <tabel style={{ border: "1px solid black" }}>
+      <tr style={{ width: "100%" }}>
+        <th style={{ width: "32%" }}>Name</th>
+        <th style={{ width: "68%" }}>Email</th>
       </tr>
       {displayUsers.map((user) => {
         return (
-          <tr>
-            <td>{user.name}</td>
-            <td>{user.email}</td>
+          <tr style={{ border: "1px solid black" }} key={user.name}>
+            <td style={{ border: "1px solid black", padding: "5px" }}>
+              {user.name}
+            </td>
+            <td style={{ border: "1px solid black", padding: "5px" }}>
+              {user.email}
+            </td>
           </tr>
         );
       })}

@@ -1,25 +1,24 @@
-const UserList = ({ users }) => {
-  console.log("🚀 ~ file: UserList.js:2 ~ UserList ~ users:", users);
-  return (
-    <tabel style={{ border: "1px solid black" }}>
-      <tr style={{ width: "100%" }}>
-        <th style={{ width: "32%" }}>Name</th>
-        <th style={{ width: "68%" }}>Email</th>
+function UserList({ users }) {
+  const renderedUsers = users.map((user) => {
+    return (
+      <tr key={user.name}>
+        <td>{user.name}</td>
+        <td>{user.email}</td>
       </tr>
-      {users.map((user) => {
-        return (
-          <tr style={{ border: "1px solid black" }} key={user.name}>
-            <td style={{ border: "1px solid black", padding: "5px" }}>
-              {user.name}
-            </td>
-            <td style={{ border: "1px solid black", padding: "5px" }}>
-              {user.email}
-            </td>
-          </tr>
-        );
-      })}
-    </tabel>
+    );
+  });
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>{renderedUsers}</tbody>
+    </table>
   );
-};
+}
 
 export default UserList;

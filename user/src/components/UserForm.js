@@ -1,40 +1,28 @@
 import { useState } from "react";
 
-const UserForm = ({ addUsers }) => {
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+function UserForm({ onUserAdd }) {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
 
-  const handleForm = (e) => {
-    e.preventDefault();
-    addUsers(userName, userEmail);
-    setUserEmail("");
-    setUserName("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    onUserAdd({ name, email });
   };
+
   return (
-    <form onSubmit={handleForm} style={{ marginBottom: "50px" }}>
-      <label name="name">Name</label> <br />
-      <input
-        type="text"
-        name="name"
-        id="name"
-        placeholder="Enter Your Name"
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)}
-      />
-      <br />
-      <label name="email">Email</label> <br />
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Enter Your Email"
-        value={userEmail}
-        onChange={(e) => setUserEmail(e.target.value)}
-      />
-      <br />
-      <button>Submit</button>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Name</label>
+        <input value={name} onChange={(e) => setName(e.target.value)} />
+      </div>
+      <div>
+        <label>Email</label>
+        <input value={email} onChange={(e) => setEmail(e.target.value)} />
+      </div>
+      <button>Add User</button>
     </form>
   );
-};
+}
 
 export default UserForm;

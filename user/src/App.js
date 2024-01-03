@@ -4,18 +4,16 @@ import UserList from "./components/UserList";
 
 function App() {
   const [users, setUsers] = useState([]);
-  console.log("🚀 ~ file: App.js:6 ~ App ~ users:", users);
 
-  const addUsers = (name, email) => {
-    setUsers([...users, { name: `${name}`, email: `${email}` }]);
+  const onUserAdd = (user) => {
+    setUsers([...users, user]);
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <UserForm addUsers={addUsers} />
-        <UserList displayUsers={users} />
-      </header>
+    <div>
+      <UserForm onUserAdd={onUserAdd} />
+      <hr />
+      <UserList users={users} />
     </div>
   );
 }
